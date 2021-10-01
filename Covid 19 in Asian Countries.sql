@@ -1,5 +1,8 @@
+
+--Skills used Aggregate functions like Count, Max. Window function, Joins
+
+
 -- 1 Count total population in each countries
-select * from covid_deaths;
 
 Select date_covid,location, MAX(population) as population
 from covid_deaths
@@ -9,7 +12,7 @@ group by location;
 select date_covid,location, max(total_cases) as covid_cases
 from covid_deaths
 group by location;
-
+-- or by window function
 select date_covid,location, sum(new_cases) over (partition by location order by date_covid) as total_covid_cases
 from covid_deaths
 group by location,date_covid;
